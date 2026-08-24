@@ -3,6 +3,7 @@
 //
 // - DMA controller의 AXI4 read/write 요청에 응답하는 검증용 메모리 모델.
 // - 1,024 x 32-bit 메모리와 고정 read latency를 제공.
+// - UVM 전환에 따라 기존 memory pattern 초기화 로직을 제거하고 source data는 sequence가 preload.
 // - 실제 DDR controller 또는 PHY 동작은 모델링하지 않음.
 // - Baseline의 ddr_controller를 역할에 맞게 이름을 변경하여 별도 파일로 분리.
 // ============================================================================
@@ -41,10 +42,6 @@ module ddr_memory_model (axi4_if.slave axi); 	// 인터페이스를 슬레이브
   
 	always_ff @(posedge axi.aclk or negedge axi.aresetn) begin // 클록/리셋
       	if (!axi.aresetn) begin 				// 비동기 리셋
-          	for (int i=0; i<64; i++) 
-				mem[i] <= 32'hCAFE_0000 + i; 	// 초기 패턴
-			for (int j=64; j<1024; j++)
-              	mem[j] <= 32'h0; 				// 나머지 0
 			rd_active <= 1'b0; rd_addr <= '0; rd_len <= '0; rd_cnt <= '0; rd_lat <= '0; rd_id_reg <= '0; // RD 초기화
 			wr_active <= 1'b0; wr_addr <= '0; wr_len <= '0; wr_cnt <= '0; wr_id_reg <= '0; 				 // WR 초기화
 			axi.rvalid <= 1'b0; axi.rlast <= 1'b0; axi.rid <= '0; axi.rdata <= '0; 						 // R채널 초기화
