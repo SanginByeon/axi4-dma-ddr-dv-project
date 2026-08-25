@@ -3,9 +3,10 @@
 //
 // - DMA controller, DDR memory model 및 AXI4/MMIO/DDR model interface를 연결.
 // - UVM 환경에 virtual interface를 전달하고 dma_test를 실행.
-// - 기준 전송, W channel backpressure 및 BRESP 오류 주입 시나리오를 실행.
+// - 정상 경계값, 오류, backpressure 및 constrained-random 시나리오를 실행.
 // - Transaction 기반 scoreboard로 전체 전송 영역의 데이터 무결성을 검증.
-// - Functional coverage 및 성능 결과를 UVM report phase에서 출력.
+// - AXI4 W 채널의 backpressure 신호 유지와 WLAST timing을 assertion으로 검증.
+// - Transaction/FSM/AXI event functional coverage 및 성능 결과를 UVM report phase에서 출력.
 // - DMA 상태와 AXI 활동을 verbosity 기반 UVM 로그로 제공.
 // ============================================================================
 
@@ -19,12 +20,17 @@ import uvm_pkg::*;
 import utility_pkg::*;
 
 `include "coverage.sv"
+`include "axi_checker.sv"
 
 `include "dma_tx.sv"
 `include "dma_base_seq.sv"
-`include "dma_s1_seq.sv"
-`include "dma_s2_seq.sv"
-`include "dma_s3_seq.sv"
+`include "dma_s1_boundary_seq.sv"
+`include "dma_s2_size_error_seq.sv"
+`include "dma_s3_backpressure_seq.sv"
+`include "dma_s4_slverr_seq.sv"
+`include "dma_s5_backpressure_slverr_seq.sv"
+`include "dma_s6_error_recovery_seq.sv"
+`include "dma_s7_random_seq.sv"
 `include "dma_driver.sv"
 `include "dma_monitor.sv"
 `include "dma_scoreboard.sv"
@@ -69,7 +75,9 @@ module tb;
     );
 
     // [DMA 컨트롤러] : AXI Master로 메모리에 접근
-    dma_controller dma_ctrl (
+    dma_controller #(
+        .DEBUG_LOG_ENABLE (1'b0)
+    ) dma_ctrl (
         .clk (clk),
         .resetn (resetn),
 
@@ -87,6 +95,12 @@ module tb;
         .dbg_state (dbg_state),
         .dbg_burst_len (dbg_burst_len),
         .dbg_buf_count (dbg_buf_count)
+    );
+
+    // [AXI4 W checker] : Backpressure 중 신호 유지와 마지막 beat의 WLAST timing 확인
+    axi_checker axi_w_checker (
+        .axi          (memory_axi),
+        .w_beats_sent (dma_ctrl.w_beats_sent)
     );
 
     // [UVM 시작] : 실제 interface를 virtual interface로 전달한 뒤 test 실행

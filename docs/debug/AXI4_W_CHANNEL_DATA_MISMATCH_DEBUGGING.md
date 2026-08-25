@@ -57,7 +57,7 @@ end
 `WVALID=1`, `WREADY=0`인 동안 payload를 유지해야 하므로, handshake 전에 다음 data로
 변경되는 동작은 protocol 위반임.
 
-수정 후: [`rtl/dma_controller.sv`](../../rtl/dma_controller.sv#L269)
+수정 후: [`rtl/dma_controller.sv`](../../rtl/dma_controller.sv#L293)
 
 ```systemverilog
 else if (m.wvalid) begin
@@ -85,7 +85,7 @@ if (w_beats_sent != burst_len_m1)
 `fifo[4]`에는 이전 S2 burst의 `CAFE00F4`가 남아 있었음. FIFO storage를 지우지 않는
 것은 문제가 아니며, 현재 burst의 유효 data 범위를 벗어나 접근한 것이 원인임.
 
-수정 후: [`rtl/dma_controller.sv`](../../rtl/dma_controller.sv#L285)
+수정 후: [`rtl/dma_controller.sv`](../../rtl/dma_controller.sv#L309)
 
 ```systemverilog
 if ((w_beats_sent + 1) < burst_len_m1)

@@ -1,0 +1,829 @@
+[2026-08-25 14:07:28 UTC] vcs -full64 -licqueue +incdir+$UVM_HOME/src $UVM_HOME/src/uvm.sv $UVM_HOME/src/dpi/uvm_dpi.cc -CFLAGS -DVCS '-timescale=1ns/1ns' '+vcs+flush+all' '+warn=all' '-sverilog' '-debug_access+all' design.sv testbench.sv  && ./simv +vcs+lic+wait  
+                         Chronologic VCS (TM)
+       Version X-2025.06-SP1_Full64 -- Tue Aug 25 10:07:30 2026
+
+                    Copyright (c) 1991 - 2025 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm.sv'
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_pkg.sv'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/uvm_version_defines.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/uvm_global_defines.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/snps_macros.svp'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/uvm_message_defines.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/uvm_phase_defines.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/uvm_object_defines.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/uvm_printer_defines.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/uvm_tlm_defines.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm_imps.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/uvm_tlm_defines.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/uvm_sequence_defines.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/uvm_callback_defines.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/uvm_reg_defines.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/macros/uvm_deprecated_defines.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_pkg.sv'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dpi/uvm_dpi.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dpi/uvm_hdl.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dpi/uvm_dpi.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dpi/uvm_svcmd_dpi.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dpi/uvm_dpi.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dpi/uvm_regex.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dpi/uvm_dpi.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_pkg.sv'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_coreservice.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_version.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_object_globals.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_misc.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_object.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_pool.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_queue.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_factory.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_registry.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_spell_chkr.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_resource.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_resource_specializations.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_resource_db.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_config_db.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_printer.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_comparer.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_packer.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_links.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_tr_database.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_tr_stream.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_recorder.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_event_callback.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_event.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_barrier.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_callback.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_callback.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_report_message.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_report_catcher.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_report_server.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_report_handler.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_report_object.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_transaction.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_phase.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_domain.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_bottomup_phase.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_topdown_phase.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_task_phase.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_common_phases.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_runtime_phases.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_component.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_root.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_component.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_objection.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_heartbeat.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_globals.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_cmdline_processor.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_traversal.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_base.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_pkg.sv'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dap/uvm_dap.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dap/uvm_set_get_dap_base.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dap/uvm_dap.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dap/uvm_simple_lock_dap.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dap/uvm_dap.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dap/uvm_get_to_lock_dap.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dap/uvm_dap.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dap/uvm_set_before_get_dap.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dap/uvm_dap.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_pkg.sv'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm_ifs.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_sqr_ifs.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_port_base.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm_imps.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_imps.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_ports.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_exports.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_analysis_port.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm_fifo_base.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm_fifos.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm_req_rsp.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_sqr_connections.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm1/uvm_tlm.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_pkg.sv'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_pair.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_policies.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_in_order_comparator.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_algorithmic_comparator.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_random_stimulus.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_subscriber.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_monitor.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_driver.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_push_driver.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_scoreboard.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_agent.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_env.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_test.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/comps/uvm_comps.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_pkg.sv'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_seq.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_sequence_item.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_seq.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_sequencer_base.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_seq.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_sequencer_analysis_fifo.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_seq.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_sequencer_param_base.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_seq.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_sequencer.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_seq.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_push_sequencer.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_seq.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_sequence_base.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_seq.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_sequence.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_seq.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_sequence_library.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_seq.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_sequence_builtin.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/seq/uvm_seq.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_pkg.sv'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2_defines.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2_time.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2_generic_payload.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2_ifs.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2_imps.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2_ports.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2_exports.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2_sockets_base.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2_sockets.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/tlm2/uvm_tlm2.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_pkg.sv'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_item.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_adapter.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_predictor.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_sequence.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_cbs.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_backdoor.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_field.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_vreg_field.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_indirect.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_fifo.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_file.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_mem_mam.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_vreg.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_mem.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_map.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_block.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/sequences/uvm_reg_hw_reset_seq.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/sequences/uvm_reg_bit_bash_seq.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/sequences/uvm_mem_walk_seq.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/sequences/uvm_mem_access_seq.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/sequences/uvm_reg_access_seq.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/sequences/uvm_reg_mem_shared_access_seq.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/sequences/uvm_reg_mem_built_in_seq.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/sequences/uvm_reg_mem_hdl_paths_seq.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/snps_uvm_reg_bank.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/reg/uvm_reg_model.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_pkg.sv'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/vcs/vcs_uvm_alt.sv'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_pkg.sv'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm.sv'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/vcs/snps_reg.svh'.
+Back to file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm.sv'.
+Parsing design file 'design.sv'
+Parsing included file 'axi4_if.sv'.
+Back to file 'design.sv'.
+Parsing included file 'ddr_model_if.sv'.
+Back to file 'design.sv'.
+Parsing included file 'dma_controller.sv'.
+Back to file 'design.sv'.
+Parsing included file 'ddr_memory_model.sv'.
+Back to file 'design.sv'.
+Parsing design file 'testbench.sv'
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Back to file 'testbench.sv'.
+
+Note-[SV-LCM-PPWI] Package previously wildcard imported
+testbench.sv, 16
+$unit
+  Package 'uvm_pkg' already wildcard imported. 
+  Ignoring uvm_pkg::*
+  See the SystemVerilog LRM(1800-2005), section 19.2.1.
+
+Parsing included file 'mmio_if.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'utility_pkg.sv'.
+Parsing included file '/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/uvm_macros.svh'.
+Back to file 'utility_pkg.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'coverage.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'axi_checker.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'dma_tx.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'dma_base_seq.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'dma_s1_boundary_seq.sv'.
+
+Note-[SV-LCM-PPWI] Package previously wildcard imported
+dma_s1_boundary_seq.sv, 9
+$unit
+  Package 'utility_pkg' already wildcard imported. 
+  Ignoring utility_pkg::*
+  See the SystemVerilog LRM(1800-2005), section 19.2.1.
+
+Back to file 'testbench.sv'.
+Parsing included file 'dma_s2_size_error_seq.sv'.
+
+Note-[SV-LCM-PPWI] Package previously wildcard imported
+dma_s2_size_error_seq.sv, 9
+$unit
+  Package 'utility_pkg' already wildcard imported. 
+  Ignoring utility_pkg::*
+  See the SystemVerilog LRM(1800-2005), section 19.2.1.
+
+Back to file 'testbench.sv'.
+Parsing included file 'dma_s3_backpressure_seq.sv'.
+
+Note-[SV-LCM-PPWI] Package previously wildcard imported
+dma_s3_backpressure_seq.sv, 9
+$unit
+  Package 'utility_pkg' already wildcard imported. 
+  Ignoring utility_pkg::*
+  See the SystemVerilog LRM(1800-2005), section 19.2.1.
+
+Back to file 'testbench.sv'.
+Parsing included file 'dma_s4_slverr_seq.sv'.
+
+Note-[SV-LCM-PPWI] Package previously wildcard imported
+dma_s4_slverr_seq.sv, 9
+$unit
+  Package 'utility_pkg' already wildcard imported. 
+  Ignoring utility_pkg::*
+  See the SystemVerilog LRM(1800-2005), section 19.2.1.
+
+Back to file 'testbench.sv'.
+Parsing included file 'dma_s5_backpressure_slverr_seq.sv'.
+
+Note-[SV-LCM-PPWI] Package previously wildcard imported
+dma_s5_backpressure_slverr_seq.sv, 9
+$unit
+  Package 'utility_pkg' already wildcard imported. 
+  Ignoring utility_pkg::*
+  See the SystemVerilog LRM(1800-2005), section 19.2.1.
+
+Back to file 'testbench.sv'.
+Parsing included file 'dma_s6_error_recovery_seq.sv'.
+
+Note-[SV-LCM-PPWI] Package previously wildcard imported
+dma_s6_error_recovery_seq.sv, 9
+$unit
+  Package 'utility_pkg' already wildcard imported. 
+  Ignoring utility_pkg::*
+  See the SystemVerilog LRM(1800-2005), section 19.2.1.
+
+Back to file 'testbench.sv'.
+Parsing included file 'dma_s7_random_seq.sv'.
+
+Note-[SV-LCM-PPWI] Package previously wildcard imported
+dma_s7_random_seq.sv, 9
+$unit
+  Package 'utility_pkg' already wildcard imported. 
+  Ignoring utility_pkg::*
+  See the SystemVerilog LRM(1800-2005), section 19.2.1.
+
+Back to file 'testbench.sv'.
+Parsing included file 'dma_driver.sv'.
+
+Note-[SV-LCM-PPWI] Package previously wildcard imported
+dma_driver.sv, 10
+$unit
+  Package 'utility_pkg' already wildcard imported. 
+  Ignoring utility_pkg::*
+  See the SystemVerilog LRM(1800-2005), section 19.2.1.
+
+Back to file 'testbench.sv'.
+Parsing included file 'dma_monitor.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'dma_scoreboard.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'dma_agent.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'dma_env.sv'.
+Back to file 'testbench.sv'.
+Parsing included file 'dma_test.sv'.
+Back to file 'testbench.sv'.
+Top Level Modules:
+       tb
+TimeScale is 1 ns / 1 ps
+
+Warning-[INTFDV] VCD dumping of interface/program/package
+testbench.sv, 124
+  Selective VCD dumping of interface 'axi4_if' is not supported.  Selective 
+  VCD dumping for interfaces, packages and programs is not supported.
+  Use full VCD dumping '$dumpvars(0)', or use VPD or FSDB dumping, recompile 
+  with '-debug_access'.
+
+Notice: Ports coerced to inout, use -notice for details
+Starting vcs inline pass...
+10 modules and 0 UDP read.
+recompiling package vcs_paramclassrepository
+recompiling package _vcs_DPI_package
+recompiling package uvm_pkg
+recompiling module axi4_if
+recompiling module ddr_model_if
+recompiling module dma_controller
+recompiling module ddr_memory_model
+recompiling module mmio_if
+recompiling package utility_pkg
+recompiling module tb
+All of 10 modules done
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+/bin/sh: line 1: cmp: command not found
+g++ -w  -pipe -fPIC -DVCS -O -I/apps/vcsmx/vcs/X-2025.06-SP1/include     -c /apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/dpi/uvm_dpi.cc
+gcc  -w  -pipe -fPIC -DVCS -O -I/apps/vcsmx/vcs/X-2025.06-SP1/include    -fPIC -c -o uM9F1_0x2aB.o uM9F1_0x2aB.c
+if [ -x ../simv ]; then chmod a-x ../simv; fi
+g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir -Wl,-rpath=/apps/vcsmx/vcs/X-2025.06-SP1/linux64/lib -L/apps/vcsmx/vcs/X-2025.06-SP1/linux64/lib  -Wl,-rpath-link=./  uvm_dpi.o   objs/amcQw_d.o  _379_archive_1.so  SIM_l.o   uM9F1_0x2aB.o   rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o            -lvirsim -lerrorinf -lsnpsmalloc -lvfs      -lvcsnew -ldistsimclient -lsimprofile -luclinative /apps/vcsmx/vcs/X-2025.06-SP1/linux64/lib/vcs_tls.o   -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive      ./../simv.daidir/vc_hdrs.o    /apps/vcsmx/vcs/X-2025.06-SP1/linux64/lib/vcs_save_restore_new.o -ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+CPU time: 25.939 seconds to compile + .866 seconds to elab + 1.803 seconds to link
+Chronologic VCS simulator copyright 1991-2025
+Contains Synopsys proprietary information.
+Compiler version X-2025.06-SP1_Full64; Runtime version X-2025.06-SP1_Full64;  Aug 25 10:07 2026
+UVM_INFO /apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_root.svh(407) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2.Synopsys
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test dma_test...
+UVM_INFO dma_driver.sv(48) @ 35000: uvm_test_top.e.a.drv [DRV] Reset phase done
+UVM_INFO dma_driver.sv(85) @ 35000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S1-1] 4B Normal Boundary Transfer] [Transaction: src_addr:0x0, dst_addr:0x400, size:4, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO testbench.sv(128) @ 65000: reporter [TB] 
+============================================================
+ DMA-DDR UVM Verification Started
+============================================================
+UVM_INFO utility_pkg.sv(58) @ 115000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 275000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 275000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x0, dst_addr:0x400, size:4, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 275000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 335000: uvm_test_top.e.a.drv [DRV] [S1-1] 4B Normal Boundary Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 365000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S1-2] 12B Normal Boundary Transfer] [Transaction: src_addr:0x400, dst_addr:0xc00, size:12, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 445000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 905000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 905000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x400, dst_addr:0xc00, size:12, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 905000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 965000: uvm_test_top.e.a.drv [DRV] [S1-2] 12B Normal Boundary Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 995000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S1-3] 16B Normal Boundary Transfer] [Transaction: src_addr:0xc00, dst_addr:0x0, size:16, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 1075000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 1295000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 1295000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0xc00, dst_addr:0x0, size:16, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 1295000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 1355000: uvm_test_top.e.a.drv [DRV] [S1-3] 16B Normal Boundary Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 1385000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S1-4] 60B Normal Boundary Transfer] [Transaction: src_addr:0x100, dst_addr:0x500, size:60, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 1465000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 2555000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 2555000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x100, dst_addr:0x500, size:60, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 2555000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 2615000: uvm_test_top.e.a.drv [DRV] [S1-4] 60B Normal Boundary Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 2645000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S1-5] 64B Normal Boundary Transfer] [Transaction: src_addr:0x500, dst_addr:0xc00, size:64, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 2725000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 3185000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 3185000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x500, dst_addr:0xc00, size:64, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 3185000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 3245000: uvm_test_top.e.a.drv [DRV] [S1-5] 64B Normal Boundary Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 3275000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S1-6] 68B Normal Boundary Transfer] [Transaction: src_addr:0xc00, dst_addr:0x0, size:68, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 3355000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 3965000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 3965000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0xc00, dst_addr:0x0, size:68, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 3965000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 4025000: uvm_test_top.e.a.drv [DRV] [S1-6] 68B Normal Boundary Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 4055000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S1-7] 80B Normal Boundary Transfer] [Transaction: src_addr:0x200, dst_addr:0x600, size:80, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 4135000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 4805000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 4805000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x200, dst_addr:0x600, size:80, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 4805000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 4865000: uvm_test_top.e.a.drv [DRV] [S1-7] 80B Normal Boundary Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 4895000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S1-8] 256B Normal Boundary Transfer] [Transaction: src_addr:0x600, dst_addr:0xc00, size:256, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 4975000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 6785000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 6785000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x600, dst_addr:0xc00, size:256, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 6785000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 6845000: uvm_test_top.e.a.drv [DRV] [S1-8] 256B Normal Boundary Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 6875000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S1-9] 1024B Normal Boundary Transfer] [Transaction: src_addr:0x0, dst_addr:0x800, size:1024, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 6955000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 14165000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 14165000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x0, dst_addr:0x800, size:1024, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 14165000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 14225000: uvm_test_top.e.a.drv [DRV] [S1-9] 1024B Normal Boundary Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 14255000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S1-10] 1028B Normal Boundary Transfer] [Transaction: src_addr:0x0, dst_addr:0x800, size:1028, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 14335000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 21695000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 21695000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x0, dst_addr:0x800, size:1028, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 21695000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 21755000: uvm_test_top.e.a.drv [DRV] [S1-10] 1028B Normal Boundary Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 21785000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S1-11] 2048B Normal Boundary Transfer] [Transaction: src_addr:0x0, dst_addr:0x800, size:2048, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 21865000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 36275000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 36275000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x0, dst_addr:0x800, size:2048, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 36275000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 36335000: uvm_test_top.e.a.drv [DRV] [S1-11] 2048B Normal Boundary Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 36365000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S2-1] 1B Size Error] [Transaction: src_addr:0x80, dst_addr:0x380, size:1, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 36445000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(74) @ 36485000: reporter [DMA_WAIT] DMA error interrupt occurred!
+UVM_INFO dma_monitor.sv(74) @ 36485000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x80, dst_addr:0x380, size:1, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_ERROR dma_scoreboard.sv(79) @ 36485000: uvm_test_top.e.scb [SCB] [0] Mismatch src=0x00000000, dst=0xcafe00e0
+UVM_ERROR dma_scoreboard.sv(90) @ 36485000: uvm_test_top.e.scb [SCB] Data Transfer Verification FAILED: mismatches=1, unknowns=0
+UVM_ERROR dma_driver.sv(120) @ 36545000: uvm_test_top.e.a.drv [DRV] [S2-1] 1B Size Error FAILED. DUT reported an error.
+UVM_INFO dma_driver.sv(85) @ 36575000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S2-2] 2B Size Error] [Transaction: src_addr:0x480, dst_addr:0xc80, size:2, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 36655000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(74) @ 36705000: reporter [DMA_WAIT] DMA error interrupt occurred!
+UVM_INFO dma_monitor.sv(74) @ 36705000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x480, dst_addr:0xc80, size:2, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_ERROR dma_scoreboard.sv(79) @ 36705000: uvm_test_top.e.scb [SCB] [0] Mismatch src=0x00000000, dst=0xcafe0120
+UVM_ERROR dma_scoreboard.sv(90) @ 36705000: uvm_test_top.e.scb [SCB] Data Transfer Verification FAILED: mismatches=1, unknowns=0
+UVM_ERROR dma_driver.sv(120) @ 36765000: uvm_test_top.e.a.drv [DRV] [S2-2] 2B Size Error FAILED. DUT reported an error.
+UVM_INFO dma_driver.sv(85) @ 36795000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S2-3] 3B Size Error] [Transaction: src_addr:0xc40, dst_addr:0x40, size:3, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 36875000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(74) @ 36925000: reporter [DMA_WAIT] DMA error interrupt occurred!
+UVM_INFO dma_monitor.sv(74) @ 36925000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0xc40, dst_addr:0x40, size:3, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_ERROR dma_scoreboard.sv(79) @ 36925000: uvm_test_top.e.scb [SCB] [0] Mismatch src=0x00fe0000, dst=0xcafe0010
+UVM_ERROR dma_scoreboard.sv(90) @ 36925000: uvm_test_top.e.scb [SCB] Data Transfer Verification FAILED: mismatches=1, unknowns=0
+UVM_ERROR dma_driver.sv(120) @ 36985000: uvm_test_top.e.a.drv [DRV] [S2-3] 3B Size Error FAILED. DUT reported an error.
+UVM_INFO dma_driver.sv(85) @ 37015000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S2-4] 15B Size Error] [Transaction: src_addr:0x180, dst_addr:0x680, size:15, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 37095000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(74) @ 37595000: reporter [DMA_WAIT] DMA error interrupt occurred!
+UVM_INFO dma_monitor.sv(74) @ 37595000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x180, dst_addr:0x680, size:15, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_ERROR dma_scoreboard.sv(79) @ 37595000: uvm_test_top.e.scb [SCB] [12] Mismatch src=0x00fe0003, dst=0xcafe01a3
+UVM_ERROR dma_scoreboard.sv(90) @ 37595000: uvm_test_top.e.scb [SCB] Data Transfer Verification FAILED: mismatches=1, unknowns=0
+UVM_ERROR dma_driver.sv(120) @ 37655000: uvm_test_top.e.a.drv [DRV] [S2-4] 15B Size Error FAILED. DUT reported an error.
+UVM_INFO dma_driver.sv(85) @ 37685000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S3-1] 4B Transfer with 10% Backpressure] [Transaction: src_addr:0x100, dst_addr:0x500, size:4, enable:1, start:1, irq:1, backpressure_prob:10%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 37765000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 37935000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 37935000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x100, dst_addr:0x500, size:4, enable:1, start:1, irq:1, backpressure_prob:10%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 37935000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 37995000: uvm_test_top.e.a.drv [DRV] [S3-1] 4B Transfer with 10% Backpressure PASSED
+UVM_INFO dma_driver.sv(85) @ 38025000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S3-2] 16B Transfer with 10% Backpressure] [Transaction: src_addr:0x500, dst_addr:0xc00, size:16, enable:1, start:1, irq:1, backpressure_prob:10%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 38105000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 38355000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 38355000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x500, dst_addr:0xc00, size:16, enable:1, start:1, irq:1, backpressure_prob:10%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 38355000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 38415000: uvm_test_top.e.a.drv [DRV] [S3-2] 16B Transfer with 10% Backpressure PASSED
+UVM_INFO dma_driver.sv(85) @ 38445000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S3-3] 64B Transfer with 10% Backpressure] [Transaction: src_addr:0xc00, dst_addr:0x100, size:64, enable:1, start:1, irq:1, backpressure_prob:10%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 38525000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 39005000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 39005000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0xc00, dst_addr:0x100, size:64, enable:1, start:1, irq:1, backpressure_prob:10%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 39005000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 39065000: uvm_test_top.e.a.drv [DRV] [S3-3] 64B Transfer with 10% Backpressure PASSED
+UVM_INFO dma_driver.sv(85) @ 39095000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S3-4] 4B Transfer with 50% Backpressure] [Transaction: src_addr:0x100, dst_addr:0x500, size:4, enable:1, start:1, irq:1, backpressure_prob:50%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 39175000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 39345000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 39345000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x100, dst_addr:0x500, size:4, enable:1, start:1, irq:1, backpressure_prob:50%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 39345000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 39405000: uvm_test_top.e.a.drv [DRV] [S3-4] 4B Transfer with 50% Backpressure PASSED
+UVM_INFO dma_driver.sv(85) @ 39435000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S3-5] 16B Transfer with 50% Backpressure] [Transaction: src_addr:0x500, dst_addr:0xc00, size:16, enable:1, start:1, irq:1, backpressure_prob:50%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 39515000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 39765000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 39765000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x500, dst_addr:0xc00, size:16, enable:1, start:1, irq:1, backpressure_prob:50%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 39765000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 39825000: uvm_test_top.e.a.drv [DRV] [S3-5] 16B Transfer with 50% Backpressure PASSED
+UVM_INFO dma_driver.sv(85) @ 39855000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S3-6] 64B Transfer with 50% Backpressure] [Transaction: src_addr:0xc00, dst_addr:0x100, size:64, enable:1, start:1, irq:1, backpressure_prob:50%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 39935000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 40555000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 40555000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0xc00, dst_addr:0x100, size:64, enable:1, start:1, irq:1, backpressure_prob:50%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 40555000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 40615000: uvm_test_top.e.a.drv [DRV] [S3-6] 64B Transfer with 50% Backpressure PASSED
+UVM_INFO dma_driver.sv(85) @ 40645000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S3-7] 4B Transfer with 90% Backpressure] [Transaction: src_addr:0x100, dst_addr:0x500, size:4, enable:1, start:1, irq:1, backpressure_prob:90%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 40725000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 40905000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 40905000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x100, dst_addr:0x500, size:4, enable:1, start:1, irq:1, backpressure_prob:90%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 40905000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 40965000: uvm_test_top.e.a.drv [DRV] [S3-7] 4B Transfer with 90% Backpressure PASSED
+UVM_INFO dma_driver.sv(85) @ 40995000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S3-8] 16B Transfer with 90% Backpressure] [Transaction: src_addr:0x500, dst_addr:0xc00, size:16, enable:1, start:1, irq:1, backpressure_prob:90%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 41075000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 41475000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 41475000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x500, dst_addr:0xc00, size:16, enable:1, start:1, irq:1, backpressure_prob:90%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 41475000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 41535000: uvm_test_top.e.a.drv [DRV] [S3-8] 16B Transfer with 90% Backpressure PASSED
+UVM_INFO dma_driver.sv(85) @ 41565000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S3-9] 64B Transfer with 90% Backpressure] [Transaction: src_addr:0xc00, dst_addr:0x100, size:64, enable:1, start:1, irq:1, backpressure_prob:90%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 41645000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 43125000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 43125000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0xc00, dst_addr:0x100, size:64, enable:1, start:1, irq:1, backpressure_prob:90%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 43125000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 43185000: uvm_test_top.e.a.drv [DRV] [S3-9] 64B Transfer with 90% Backpressure PASSED
+UVM_INFO dma_driver.sv(85) @ 43215000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S4-1] 64B BRESP SLVERR Injection] [Transaction: src_addr:0x200, dst_addr:0xa00, size:64, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:1]
+UVM_INFO utility_pkg.sv(58) @ 43295000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(74) @ 43755000: reporter [DMA_WAIT] DMA error interrupt occurred!
+UVM_INFO dma_monitor.sv(74) @ 43755000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x200, dst_addr:0xa00, size:64, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:1]
+UVM_INFO dma_scoreboard.sv(88) @ 43755000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_ERROR dma_driver.sv(120) @ 43815000: uvm_test_top.e.a.drv [DRV] [S4-1] 64B BRESP SLVERR Injection FAILED. DUT reported an error.
+UVM_INFO dma_driver.sv(85) @ 43845000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S5-1] 4B Transfer with 10% Backpressure and SLVERR] [Transaction: src_addr:0x300, dst_addr:0x700, size:4, enable:1, start:1, irq:1, backpressure_prob:10%, error_inject:1]
+UVM_INFO utility_pkg.sv(58) @ 43925000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(74) @ 44095000: reporter [DMA_WAIT] DMA error interrupt occurred!
+UVM_INFO dma_monitor.sv(74) @ 44095000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x300, dst_addr:0x700, size:4, enable:1, start:1, irq:1, backpressure_prob:10%, error_inject:1]
+UVM_INFO dma_scoreboard.sv(88) @ 44095000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_ERROR dma_driver.sv(120) @ 44155000: uvm_test_top.e.a.drv [DRV] [S5-1] 4B Transfer with 10% Backpressure and SLVERR FAILED. DUT reported an error.
+UVM_INFO dma_driver.sv(85) @ 44185000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S5-2] 16B Transfer with 50% Backpressure and SLVERR] [Transaction: src_addr:0x700, dst_addr:0xc00, size:16, enable:1, start:1, irq:1, backpressure_prob:50%, error_inject:1]
+UVM_INFO utility_pkg.sv(58) @ 44265000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(74) @ 44525000: reporter [DMA_WAIT] DMA error interrupt occurred!
+UVM_INFO dma_monitor.sv(74) @ 44525000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x700, dst_addr:0xc00, size:16, enable:1, start:1, irq:1, backpressure_prob:50%, error_inject:1]
+UVM_INFO dma_scoreboard.sv(88) @ 44525000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_ERROR dma_driver.sv(120) @ 44585000: uvm_test_top.e.a.drv [DRV] [S5-2] 16B Transfer with 50% Backpressure and SLVERR FAILED. DUT reported an error.
+UVM_INFO dma_driver.sv(85) @ 44615000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S5-3] 64B Transfer with 90% Backpressure and SLVERR] [Transaction: src_addr:0xc00, dst_addr:0x300, size:64, enable:1, start:1, irq:1, backpressure_prob:90%, error_inject:1]
+UVM_INFO utility_pkg.sv(58) @ 44695000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(74) @ 46325000: reporter [DMA_WAIT] DMA error interrupt occurred!
+UVM_INFO dma_monitor.sv(74) @ 46325000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0xc00, dst_addr:0x300, size:64, enable:1, start:1, irq:1, backpressure_prob:90%, error_inject:1]
+UVM_INFO dma_scoreboard.sv(88) @ 46325000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_ERROR dma_driver.sv(120) @ 46385000: uvm_test_top.e.a.drv [DRV] [S5-3] 64B Transfer with 90% Backpressure and SLVERR FAILED. DUT reported an error.
+UVM_INFO dma_driver.sv(85) @ 46415000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S6-1] Size Error before Recovery] [Transaction: src_addr:0x100, dst_addr:0x900, size:3, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 46495000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(74) @ 46545000: reporter [DMA_WAIT] DMA error interrupt occurred!
+UVM_INFO dma_monitor.sv(74) @ 46545000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x100, dst_addr:0x900, size:3, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_ERROR dma_scoreboard.sv(79) @ 46545000: uvm_test_top.e.scb [SCB] [0] Mismatch src=0x00fe0000, dst=0xcafe0040
+UVM_ERROR dma_scoreboard.sv(90) @ 46545000: uvm_test_top.e.scb [SCB] Data Transfer Verification FAILED: mismatches=1, unknowns=0
+UVM_ERROR dma_driver.sv(120) @ 46605000: uvm_test_top.e.a.drv [DRV] [S6-1] Size Error before Recovery FAILED. DUT reported an error.
+UVM_INFO dma_driver.sv(85) @ 46635000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S6-2] Normal Transfer after Size Error] [Transaction: src_addr:0x200, dst_addr:0xa00, size:16, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 46715000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 46945000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 46945000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x200, dst_addr:0xa00, size:16, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 46945000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 47005000: uvm_test_top.e.a.drv [DRV] [S6-2] Normal Transfer after Size Error PASSED
+UVM_INFO dma_driver.sv(85) @ 47035000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S6-3] SLVERR before Recovery] [Transaction: src_addr:0x300, dst_addr:0xb00, size:64, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:1]
+UVM_INFO utility_pkg.sv(58) @ 47115000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(74) @ 47575000: reporter [DMA_WAIT] DMA error interrupt occurred!
+UVM_INFO dma_monitor.sv(74) @ 47575000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x300, dst_addr:0xb00, size:64, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:1]
+UVM_INFO dma_scoreboard.sv(88) @ 47575000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_ERROR dma_driver.sv(120) @ 47635000: uvm_test_top.e.a.drv [DRV] [S6-3] SLVERR before Recovery FAILED. DUT reported an error.
+UVM_INFO dma_driver.sv(85) @ 47665000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S6-4] Normal Transfer after SLVERR] [Transaction: src_addr:0x400, dst_addr:0xc00, size:16, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 47745000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 47975000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 47975000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x400, dst_addr:0xc00, size:16, enable:1, start:1, irq:1, backpressure_prob:0%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 47975000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 48035000: uvm_test_top.e.a.drv [DRV] [S6-4] Normal Transfer after SLVERR PASSED
+UVM_INFO dma_driver.sv(85) @ 48065000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S7-1] Constrained-Random Normal Transfer] [Transaction: src_addr:0xec4, dst_addr:0x73c, size:96, enable:1, start:1, irq:1, backpressure_prob:43%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 48145000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 49165000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 49165000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0xec4, dst_addr:0x73c, size:96, enable:1, start:1, irq:1, backpressure_prob:43%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 49165000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 49225000: uvm_test_top.e.a.drv [DRV] [S7-1] Constrained-Random Normal Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 49255000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S7-2] Constrained-Random Normal Transfer] [Transaction: src_addr:0x200, dst_addr:0x2c, size:160, enable:1, start:1, irq:1, backpressure_prob:74%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 49335000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 51895000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 51895000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x200, dst_addr:0x2c, size:160, enable:1, start:1, irq:1, backpressure_prob:74%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 51895000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 51955000: uvm_test_top.e.a.drv [DRV] [S7-2] Constrained-Random Normal Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 51985000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S7-3] Constrained-Random Normal Transfer] [Transaction: src_addr:0xa94, dst_addr:0xb9c, size:200, enable:1, start:1, irq:1, backpressure_prob:15%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 52065000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 53865000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 53865000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0xa94, dst_addr:0xb9c, size:200, enable:1, start:1, irq:1, backpressure_prob:15%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 53865000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 53925000: uvm_test_top.e.a.drv [DRV] [S7-3] Constrained-Random Normal Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 53955000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S7-4] Constrained-Random Normal Transfer] [Transaction: src_addr:0x80c, dst_addr:0xa0c, size:80, enable:1, start:1, irq:1, backpressure_prob:8%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 54035000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 54725000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 54725000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x80c, dst_addr:0xa0c, size:80, enable:1, start:1, irq:1, backpressure_prob:8%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 54725000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 54785000: uvm_test_top.e.a.drv [DRV] [S7-4] Constrained-Random Normal Transfer PASSED
+UVM_INFO dma_driver.sv(85) @ 54815000: uvm_test_top.e.a.drv [DRV] Start [Scenario: [S7-5] Constrained-Random Normal Transfer] [Transaction: src_addr:0x1d4, dst_addr:0x7e8, size:72, enable:1, start:1, irq:1, backpressure_prob:84%, error_inject:0]
+UVM_INFO utility_pkg.sv(58) @ 54895000: reporter [DMA_WAIT] Waiting for DMA completion...
+UVM_INFO utility_pkg.sv(66) @ 56225000: reporter [DMA_WAIT] DMA completion interrupt received!
+UVM_INFO dma_monitor.sv(74) @ 56225000: uvm_test_top.e.a.mon [MON] Collected Transaction: [Transaction: src_addr:0x1d4, dst_addr:0x7e8, size:72, enable:1, start:1, irq:1, backpressure_prob:84%, error_inject:0]
+UVM_INFO dma_scoreboard.sv(88) @ 56225000: uvm_test_top.e.scb [SCB] Data Transfer Verification PASSED
+UVM_INFO dma_driver.sv(122) @ 56285000: uvm_test_top.e.a.drv [DRV] [S7-5] Constrained-Random Normal Transfer PASSED
+UVM_INFO /apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_objection.svh(1276) @ 56315000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO dma_scoreboard.sv(112) @ 56315000: uvm_test_top.e.scb [SCB] All expected transactions checked: 37
+
+--- Performance Analysis ---
+ Total execution time: 56315.0 ns (5632 cycles)
+ Estimated throughput: 193.20 Mbps
+ Excellent performance
+
+--- AXI4 W Channel Checker Report ---
+ A-01 W payload stable on stall violations: 0
+ A-02 WVALID hold violations: 0
+ A-03 WLAST timing violations: 0
+ Total AXI W violations: 0
+
+ AXI4 W channel checker: PASSED
+
+--- Coverage Analysis Report ---
+ Overall Coverage: 100.00%
+ DMA Transaction Coverage: 100.00%
+ DMA FSM Coverage: 100.00%
+ AXI Event Coverage: 100.00%
+
+ [DMA Transaction Coverpoints]
+ C-TX-01   cp_size_boundary                 : 100.00%
+ C-TX-02   cp_size_range                    : 100.00%
+ C-TX-03   cp_size_category                 : 100.00%
+ C-TX-04   cp_src_region                    : 100.00%
+ C-TX-05   cp_dst_region                    : 100.00%
+ C-TX-06   cp_backpressure_class            : 100.00%
+ C-TX-07   cp_error_inject                  : 100.00%
+ C-TX-08   cp_error_code                    : 100.00%
+
+ [DMA Transaction Crosses]
+ X-TX-01   cx_size_result                   : 100.00%
+ X-TX-02   cx_inject_result                 : 100.00%
+ X-TX-03   cx_inject_backpressure           : 100.00%
+
+ [DMA FSM Coverpoints]
+ C-FSM-01  cp_state                         : 100.00%
+ C-FSM-02  cp_state_transition              : 100.00%
+ C-FSM-03  cp_setup_case                    : 100.00%
+ C-FSM-04  cp_tail_setup_case               : 100.00%
+
+ [AXI Event Coverpoints]
+ C-AXI-01  cp_awlen                         : 100.00%
+ C-AXI-02  cp_backpressure_cfg_at_aw        : 100.00%
+ C-AXI-03  cp_w_event                       : 100.00%
+ C-AXI-04  cp_stall_awlen                   : 100.00%
+ C-AXI-05  cp_wlast_awlen                   : 100.00%
+ C-AXI-06  cp_bresp                         : 100.00%
+ C-AXI-07  cp_error_inject_at_b             : 100.00%
+
+ [AXI Event Crosses]
+ X-AXI-01  cx_backpressure_awlen            : 100.00%
+ X-AXI-02  cx_bresp_error_inject            : 100.00%
+
+ Coverage Closure Achieved
+
+============================================================
+ Final Test Result
+============================================================
+ Expected/Actual UVM errors: 20 / 20
+ UVM warnings: 0
+ UVM fatals: 0
+ Checked transactions: 37 / 37
+ AXI W violations: 0
+ Functional coverage closed: YES
+
+ FINAL TEST RESULT: PASSED
+UVM_INFO /apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_report_server.svh(904) @ 56315000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :  213
+UVM_WARNING :    0
+UVM_ERROR :   20
+UVM_FATAL :    0
+** Report counts by id
+[DMA_WAIT]    74
+[DRV]    75
+[MON]    37
+[RNTST]     1
+[SCB]    43
+[TB]     1
+[TEST_DONE]     1
+[UVM/RELNOTES]     1
+
+$finish called from file "/apps/vcsmx/vcs/X-2025.06-SP1//etc/uvm-1.2/src/base/uvm_root.svh", line 532.
+$finish at simulation time             56315000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 56315000 ps
+CPU Time:      1.120 seconds;       Data structure size:   0.6Mb
+Tue Aug 25 10:08:00 2026
+Finding VCD file...
+./dma_ddr_system.vcd
+[2026-08-25 14:08:00 UTC] Opening EPWave...
+Done

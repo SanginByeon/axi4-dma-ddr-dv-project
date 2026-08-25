@@ -4,15 +4,19 @@
 // - MMIO로 설정된 SRC, DST, SIZE에 따라 메모리 복사 수행.
 // - AXI4 read burst로 수신한 데이터를 내부 FIFO에 저장한 후 write burst로 전송.
 // - 전송 상태와 오류 정보를 MMIO register 및 interrupt로 제공.
-// - Baseline design.sv의 DMA controller를 동작 변경 없이 별도 파일로 분리.
+// - DEBUG_LOG_ENABLE parameter로 DUT 내부 진행 로그 출력을 제어.
+// - Step 1에서 Baseline design.sv의 DMA controller를 동작 변경 없이 별도 파일로 분리.
 //
 // [Bug Fix]
 // - AXI4 W payload 갱신 조건 오류: WREADY 확인 없이 WVALID만으로 다음 payload를 출력하는 문제 수정.
 // - FIFO prefetch 종료 조건 오류: 후속 beat가 없는데도 현재 burst 범위 밖의 data를 prefetch하는 문제 수정.
 // - BRESP 오류 상태 전이 조건 오류: 이전 stat.error 값 참조로 S_DONE에 잘못 전이하는 문제 수정.
+// - AXI4 WLAST 생성 조건 오류: 현재 beat 기준 계산으로 WLAST가 마지막 handshake 이후 활성화되는 문제 수정.
 // ============================================================================
 
-module dma_controller (
+module dma_controller #(
+    parameter bit DEBUG_LOG_ENABLE = 1'b0
+) (
   	input logic clk,	// 내부 클록
   	input logic resetn, // 내부 리셋(Active-Low)
   
@@ -110,19 +114,28 @@ module dma_controller (
               	unique case (reg_addr)	   // 주소 디코드
 					8'h00: begin
 						ctrl <= dma_ctrl_t'(reg_wdata); // CTRL 업데이트
-                      	$display("[%0t] DMA: Control register set - enable=%0b, start=%0b", $time, reg_wdata[0], reg_wdata[1]); // 디버깅 로그
+						if (DEBUG_LOG_ENABLE)
+							$display("[%0t] DMA: Control register set - enable=%0b, start=%0b", $time, reg_wdata[0], reg_wdata[1]);
 					end
 					8'h08: begin
-                      	src_reg <= reg_wdata;
-                      	$display("[%0t] DMA: Source address set - 0x%08X", $time, reg_wdata);
+						src_reg <= reg_wdata;
+						if (DEBUG_LOG_ENABLE)
+							$display("[%0t] DMA: Source address set - 0x%08X", $time, reg_wdata);
                     end
-                  	8'h0C: begin
-                      	dst_reg <= reg_wdata; $display("[%0t] DMA: Destination address set - 0x%08X", $time, reg_wdata);
+					8'h0C: begin
+						dst_reg <= reg_wdata;
+						if (DEBUG_LOG_ENABLE)
+							$display("[%0t] DMA: Destination address set - 0x%08X", $time, reg_wdata);
                     end
-                  	8'h10: begin
-                      	size_reg <= reg_wdata; $display("[%0t] DMA: Transfer size set - %0d bytes", $time, reg_wdata);
+					8'h10: begin
+						size_reg <= reg_wdata;
+						if (DEBUG_LOG_ENABLE)
+							$display("[%0t] DMA: Transfer size set - %0d bytes", $time, reg_wdata);
                     end
-                  	default: $display("[%0t] DMA: Invalid register address access - 0x%02X", $time, reg_addr);
+					default: begin
+						if (DEBUG_LOG_ENABLE)
+							$display("[%0t] DMA: Invalid register address access - 0x%02X", $time, reg_addr);
+					end
 				endcase
 			end
 		end
@@ -178,10 +191,11 @@ module dma_controller (
 			m.arvalid <= 1'b0; 	   // 주소 valid는 해당 상태에서만 1
 			// m.wvalid/m.wdata/m.wlast는 S_WR_DATA에서만 제어
 			
-          	if (reg_write && (reg_addr==8'h00) && reg_wdata[1]) begin // CTRL.start=1 쓰기 시
+			if (reg_write && (reg_addr==8'h00) && reg_wdata[1]) begin // CTRL.start=1 쓰기 시
 				start_active <= 1'b1;  	// 시작 래치 세팅
 				setup_complete <= 1'b0; // 새 전송 준비
-				$display("[%0t] DMA: start_active set to 1", $time);
+				if (DEBUG_LOG_ENABLE)
+					$display("[%0t] DMA: start_active set to 1", $time);
 			end
           
 			unique case (cur)
@@ -199,7 +213,8 @@ module dma_controller (
                       	stat.done <= 1'b0;		 // done 클리어
                       	stat.error <= 1'b0;		 // 에러 클리어
                       	stat.error_code <= 4'h0; // 에러 코드 초기화
-                      	$display("[%0t] DMA: NEW TRANSFER STARTED - 0x%08X -> 0x%08X (%0d bytes)", $time, src_reg, dst_reg, size_reg);
+						if (DEBUG_LOG_ENABLE)
+							$display("[%0t] DMA: NEW TRANSFER STARTED - 0x%08X -> 0x%08X (%0d bytes)", $time, src_reg, dst_reg, size_reg);
                     end
 				end
               
@@ -207,23 +222,29 @@ module dma_controller (
 					start_active <= 1'b0;		// start 펄스 소진
                   if (!setup_complete) begin 	// 1회만 실행
                       	setup_complete <= 1'b1; // 다시 실행 방지
-                    	$display("[%0t] DMA: SETUP EXECUTING - bytes_left=%0d, src=0x%08X, dst=0x%08X", $time, bytes_left, cur_src, cur_dst);
+					if (DEBUG_LOG_ENABLE)
+						$display("[%0t] DMA: SETUP EXECUTING - bytes_left=%0d, src=0x%08X, dst=0x%08X", $time, bytes_left, cur_src, cur_dst);
                     
                     	if (bytes_left == 0) begin 							// 0바이트 전송 금지
 							stat.error <= 1'b1; stat.error_code <= 4'h2; 	// 크기 오류
-                          	$display("[%0t] DMA: SETUP ERROR - bytes_left is ZERO", $time);
+							if (DEBUG_LOG_ENABLE)
+								$display("[%0t] DMA: SETUP ERROR - bytes_left is ZERO", $time);
 						end else if (bytes_left >= 64) begin
 							burst_len_m1 <= 8'd15; 							// 16 beats (64B)
-                          	$display("[%0t] DMA: SETUP SUCCESS - 16 beats (64 bytes) for %0d bytes_left", $time, bytes_left);
+							if (DEBUG_LOG_ENABLE)
+								$display("[%0t] DMA: SETUP SUCCESS - 16 beats (64 bytes) for %0d bytes_left", $time, bytes_left);
 						end else if (bytes_left >= 16) begin
 							burst_len_m1 <= 8'd3; 							// 4 beats (16B)
-                          	$display("[%0t] DMA: SETUP SUCCESS - 4 beats (16 bytes) for %0d bytes_left", $time, bytes_left);
+							if (DEBUG_LOG_ENABLE)
+								$display("[%0t] DMA: SETUP SUCCESS - 4 beats (16 bytes) for %0d bytes_left", $time, bytes_left);
 						end else if (bytes_left >= 4) begin
 							burst_len_m1 <= 8'd0; 							// 1 beat (4B)
-                          	$display("[%0t] DMA: SETUP SUCCESS - 1 beat (4 bytes) for %0d bytes_left", $time, bytes_left);
+							if (DEBUG_LOG_ENABLE)
+								$display("[%0t] DMA: SETUP SUCCESS - 1 beat (4 bytes) for %0d bytes_left", $time, bytes_left);
 						end else begin 										// 4바이트 미만은 미지원
 							stat.error <= 1'b1; stat.error_code <= 4'h2;
-                          	$display("[%0t] DMA: SETUP ERROR - bytes_left=%0d < 4", $time, bytes_left);
+							if (DEBUG_LOG_ENABLE)
+								$display("[%0t] DMA: SETUP ERROR - bytes_left=%0d < 4", $time, bytes_left);
 						end
 						r_beats_rcvd <= 0; w_beats_sent <= 0; 				// 카운터 리셋
 					end
@@ -234,7 +255,8 @@ module dma_controller (
 					m.araddr <= cur_src; 			// 시작 주소
 					m.arlen <= burst_len_m1; 		// 길이-1
 					m.arid <= ctrl.channel_id[3:0]; // ID 설정
-                  	$display("[%0t] DMA: READ ADDR - 0x%08X, %0d beats", $time, cur_src, burst_len_m1+1);
+					if (DEBUG_LOG_ENABLE)
+						$display("[%0t] DMA: READ ADDR - 0x%08X, %0d beats", $time, cur_src, burst_len_m1+1);
 				end
              
 				S_RD_DATA: begin
@@ -246,7 +268,8 @@ module dma_controller (
 						cur_src <= cur_src + 4; 			// 소스 주소 증가
 						bytes_left <= bytes_left - 4; 		// 남은 바이트 감소
 						bytes_done <= bytes_done + 4; 		// 진행 바이트 증가
-						$display("[%0t] DMA: READ DATA - 0x%08X (beat %0d/%0d)", $time, m.rdata, r_beats_rcvd+1, burst_len_m1+1);
+						if (DEBUG_LOG_ENABLE)
+							$display("[%0t] DMA: READ DATA - 0x%08X (beat %0d/%0d)", $time, m.rdata, r_beats_rcvd+1, burst_len_m1+1);
 					end
 				end
          
@@ -255,7 +278,8 @@ module dma_controller (
 					m.awaddr <= cur_dst; 			// 시작 주소
 					m.awlen <= burst_len_m1; 		// 길이-1
 					m.awid <= ctrl.channel_id[3:0]; // ID 설정
-                  	$display("[%0t] DMA: WRITE ADDR - 0x%08X, %0d beats", $time, cur_dst, burst_len_m1+1);
+					if (DEBUG_LOG_ENABLE)
+						$display("[%0t] DMA: WRITE ADDR - 0x%08X, %0d beats", $time, cur_dst, burst_len_m1+1);
 				end
          
 				// 쓰기 데이터: 첫 사이클 정렬 + 한 사이클 앞 프리패치
@@ -269,7 +293,7 @@ module dma_controller (
                   	else if (m.wvalid) begin 						// 전송 진행 중
 						if (m.wready) begin 							// handshake 성립 시에만 다음 beat 출력
 							m.wdata <= wdata_hold; 					// 보관분을 내보냄
-							m.wlast <= (w_beats_sent == burst_len_m1); // 마지막 여부
+							m.wlast <= ((w_beats_sent + 1) == burst_len_m1); // 다음 beat의 마지막 여부
 						end
 					end
 					else begin
@@ -287,7 +311,8 @@ module dma_controller (
                       
                       	if (w_beats_sent == burst_len_m1) 	// 마지막 beat 직후
 							m.wvalid <= 1'b0; 				// wvalid 내림 (RESP로 이동)
-						$display("[%0t] DMA: WRITE DATA - 0x%08X -> 0x%08X (beat %0d/%0d)", $time, m.wdata, cur_dst, w_beats_sent+1, burst_len_m1+1);
+						if (DEBUG_LOG_ENABLE)
+							$display("[%0t] DMA: WRITE DATA - 0x%08X -> 0x%08X (beat %0d/%0d)", $time, m.wdata, cur_dst, w_beats_sent+1, burst_len_m1+1);
 					end
                 end
 
@@ -297,13 +322,15 @@ module dma_controller (
 						if (m.bresp != 2'b00) begin 	// 에러 응답
 							stat.error <= 1'b1; 		// 에러 표시
 							stat.error_code <= 4'h3; 	// 코드 설정
-                          	$display("[%0t] DMA: WRITE ERROR - BRESP=%b", $time, m.bresp);
+							if (DEBUG_LOG_ENABLE)
+								$display("[%0t] DMA: WRITE ERROR - BRESP=%b", $time, m.bresp);
 						end else begin 					// OKAY 응답
                           	if (bytes_left == 0) begin 	// 더 남은 바이트 없으면
 								stat.done <= 1'b1; 		// 완료(sticky)
 								stat.busy <= 1'b0; 		// 편의상 busy 내림
 							end
-							$display("[%0t] DMA: WRITE COMPLETE - bytes_left=%0d", $time, bytes_left);
+							if (DEBUG_LOG_ENABLE)
+								$display("[%0t] DMA: WRITE COMPLETE - bytes_left=%0d", $time, bytes_left);
 						end
 					end
 				end
@@ -312,21 +339,24 @@ module dma_controller (
 					r_beats_rcvd <= 0; 		// 카운터 리셋
                   	w_beats_sent <= 0; 		// 카운터 리셋
                   	setup_complete <= 1'b0; // 다음 SETUP 허용
-                  	$display("[%0t] DMA: NEXT BURST - %0d bytes remaining", $time, bytes_left);
+					if (DEBUG_LOG_ENABLE)
+						$display("[%0t] DMA: NEXT BURST - %0d bytes remaining", $time, bytes_left);
 				end
               
 				S_DONE: begin
 					stat.busy <= 1'b0; 			 // 동작 종료
                   	stat.done <= 1'b1; 			 // 완료 유지
                   	dma_done_int <= ctrl.irq_en; // IRQ enable 시 펄스
-                  	$display("[%0t] DMA: TRANSFER COMPLETED - Total %0d bytes", $time, bytes_done);
+					if (DEBUG_LOG_ENABLE)
+						$display("[%0t] DMA: TRANSFER COMPLETED - Total %0d bytes", $time, bytes_done);
 				end
 
               	S_ERROR: begin
 					stat.busy <= 1'b0; 				// 중단
 					stat.error <= 1'b1; 			// 에러 유지
                   	dma_error_int <= ctrl.irq_en; 	// 에러 IRQ 펄스
-                  	$display("[%0t] DMA: ERROR STATE - code=0x%0h", $time, stat.error_code);
+					if (DEBUG_LOG_ENABLE)
+						$display("[%0t] DMA: ERROR STATE - code=0x%0h", $time, stat.error_code);
 				end
               
               	default: ; // 방어적 기본
@@ -339,13 +369,16 @@ module dma_controller (
 		nxt = cur; // 기본 유지
 		unique case (cur)
 			S_IDLE: begin
-            	$display("[%0t] DMA: IDLE check - start_active=%0b, size_reg=%0d", $time, start_active, size_reg);
-              	if (start_active) begin 	// 시작 지시
+				if (DEBUG_LOG_ENABLE)
+					$display("[%0t] DMA: IDLE check - start_active=%0b, size_reg=%0d", $time, start_active, size_reg);
+				if (start_active) begin 	// 시작 지시
 					if (size_reg==0) begin 	// 사이즈 0 → 에러
-                    	$display("[%0t] DMA: IDLE -> ERROR (size=0)", $time);
+						if (DEBUG_LOG_ENABLE)
+							$display("[%0t] DMA: IDLE -> ERROR (size=0)", $time);
 						nxt = S_ERROR;
 					end else begin 			// 정상 → SETUP
-                    	$display("[%0t] DMA: IDLE -> SETUP (size=%0d)", $time, size_reg);
+						if (DEBUG_LOG_ENABLE)
+							$display("[%0t] DMA: IDLE -> SETUP (size=%0d)", $time, size_reg);
 						nxt = S_SETUP;
 					end
 				end

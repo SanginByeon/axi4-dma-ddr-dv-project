@@ -55,7 +55,7 @@ end
 설정함. 같은 시점의 next-state 조합 논리는 갱신 전 `stat.error=0`을 참조하므로,
 현재 응답이 SLVERR인데도 정상 완료 경로를 선택함.
 
-수정 후: [`rtl/dma_controller.sv`](../../rtl/dma_controller.sv#L373)
+수정 후: [`rtl/dma_controller.sv`](../../rtl/dma_controller.sv#L406)
 
 ```systemverilog
 S_WR_RESP: if (m.bvalid && m.bready) begin
