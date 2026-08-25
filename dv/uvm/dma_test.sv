@@ -1,7 +1,7 @@
 // ============================================================================
 // dma_test.sv - DMA UVM Test
 //
-// - Reset 해제 후 DMA UVM environment의 정상 전송 scenario sequence를 순차 실행.
+// - Reset 해제 후 기준 전송, backpressure 및 BRESP 오류 주입 scenario를 순차 실행.
 // - Agent mode와 예상 transaction 수를 config_db로 환경에 전달.
 // - 전체 UVM 계층의 verbosity를 end_of_elaboration phase에서 설정.
 // - Functional coverage를 수집하고 report phase에서 coverage와 성능 요약을 출력.
@@ -59,7 +59,7 @@ class dma_test extends uvm_test;
         uvm_top.set_report_verbosity_level_hier(UVM_FULL);
     endfunction
 
-    // [run_phase] : Reset 해제 후 정상 전송 Scenario를 순차 실행
+    // [run_phase] : Reset 해제 후 기준 전송, backpressure 및 BRESP 오류 주입 Scenario 실행
     virtual task run_phase(uvm_phase phase);
         phase.raise_objection(this);
 

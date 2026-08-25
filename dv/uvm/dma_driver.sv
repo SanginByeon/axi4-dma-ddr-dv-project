@@ -2,6 +2,7 @@
 // dma_driver.sv - DMA UVM Driver
 //
 // - Sequence로부터 DMA transaction을 받아 MMIO register에 설정값을 기록.
+// - Transaction별 backpressure와 BRESP 오류 주입 설정을 DDR memory model에 전달.
 // - DMA 완료 또는 오류를 기다린 후 status와 전송 바이트 수를 확인.
 // - MMIO task는 utility_pkg를 통해 호출.
 // ============================================================================
@@ -22,6 +23,7 @@ class dma_driver extends uvm_driver #(dma_tx);
     dma_tx req;
     virtual mmio_if.tb_mp mif;
     virtual axi4_if aif;
+    virtual ddr_model_if dif;
 
     function new(input string name = "dma_driver", uvm_component parent = null);
         super.new(name, parent);
@@ -36,6 +38,8 @@ class dma_driver extends uvm_driver #(dma_tx);
         mif.dma_reg_write <= 1'b0;
         mif.dma_reg_addr  <= '0;
         mif.dma_reg_wdata <= '0;
+        dif.backpressure_prob <= '0;
+        dif.error_inject <= 1'b0;
 
         wait (aif.aresetn == 1'b1); // 리셋 비활성화 대기
 
@@ -57,12 +61,18 @@ class dma_driver extends uvm_driver #(dma_tx);
 
         if (!uvm_config_db #(virtual axi4_if)::get(this, "", "aif", aif))
             `uvm_fatal("DRV", "Unable to get aif from uvm_config_db");
+
+        if (!uvm_config_db #(virtual ddr_model_if)::get(this, "", "dif", dif))
+            `uvm_fatal("DRV", "Unable to get dif from uvm_config_db");
     endfunction
 
     // [run_phase] : Sequence item을 MMIO stimulus로 변환하여 DUT 구동
     virtual task run_phase(uvm_phase phase);
         bit [31:0] ctrl_reg_value;
         bit [31:0] status;
+        int timeout_cycles;
+        int word_count;
+        int stall_wait_budget;
 
         super.run_phase(phase);
 
@@ -73,6 +83,10 @@ class dma_driver extends uvm_driver #(dma_tx);
             // Sequencer에서 transaction을 받아 MMIO stimulus 시작
             seq_item_port.get_next_item(req);
             `uvm_info("DRV", $sformatf("Start %s", req.convert2string()), UVM_MEDIUM)
+
+            // DMA 설정 전에 DDR memory model의 backpressure와 BRESP 오류 설정 적용
+            dif.backpressure_prob <= req.backpressure_prob;
+            dif.error_inject <= req.error_inject;
 
             // DMA 시작 전에 source/destination 주소와 전송 크기 설정
             write_dma_reg(DMA_SRC_ADDR_REG, req.src_addr); // SRC_ADDR
@@ -91,8 +105,13 @@ class dma_driver extends uvm_driver #(dma_tx);
             write_dma_reg(DMA_CTRL_REG, ctrl_reg_value); // CTRL: enable/start/irq
 
             // Interrupt를 우선 기다리고 STATUS polling으로 완료 상태를 보조 확인
-            wait_dma_completion(1000); // 인터럽트/오류/타임아웃 중 하나 포착
-            wait_done_via_status();    // 보조 확인(STATUS 폴링)
+            // 전송 크기와 backpressure 확률을 반영해 정상적인 stall 지연을 허용
+            word_count = (req.size + 3) / 4;
+            // 평균 W handshake 대기값 100/(100-p)에 4배 여유 적용
+            stall_wait_budget = 400 / (100 - req.backpressure_prob);
+            timeout_cycles = 500 + (word_count * (8 + stall_wait_budget));
+            wait_dma_completion(timeout_cycles); // 인터럽트/오류/타임아웃 중 하나 포착
+            wait_done_via_status();               // 보조 확인(STATUS 폴링)
 
             // STATUS의 error/done 비트를 기준으로 개별 transaction 결과 판정
             read_dma_reg(DMA_STAT_REG, status); // STATUS 읽기
@@ -107,6 +126,10 @@ class dma_driver extends uvm_driver #(dma_tx);
             // DUT가 기록한 실제 전송 바이트 수 확인
             read_dma_reg(DMA_BYTES_DONE_REG, status); // BYTES_TRANSFERRED
             `uvm_info("DRV", $sformatf("Bytes transferred: %0d", status), UVM_HIGH)
+
+            // 다음 transaction에 backpressure 및 error injection 설정이 누출되지 않도록 복구
+            dif.backpressure_prob <= '0;
+            dif.error_inject <= 1'b0;
 
             // 현재 transaction 처리를 완료하고 다음 item 요청 허용
             seq_item_port.item_done();

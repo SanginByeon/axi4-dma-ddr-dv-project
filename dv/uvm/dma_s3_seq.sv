@@ -1,8 +1,8 @@
 // ============================================================================
 // dma_s3_seq.sv - DMA Scenario 3 Sequences
 //
-// - 4-byte 정렬 주소에서 16-byte 및 64-byte 소형 복사를 수행.
-// - 작은 전송의 burst length와 handshake 동작을 확인할 transaction을 생성.
+// - 16-byte 전송에는 90% backpressure를 적용해 강한 W channel stall을 생성.
+// - 64-byte 전송에는 BRESP SLVERR를 단독 주입해 오류 응답 경로를 확인.
 // ============================================================================
 
 import utility_pkg::*;
@@ -14,7 +14,7 @@ class dma_s3_1_seq extends dma_base_seq;
         super.new(name);
     endfunction
 
-    // [body] : 16-byte 소형 복사 transaction 생성 및 source memory 초기화
+    // [body] : 90% backpressure가 적용된 16-byte 소형 복사 transaction 생성
     virtual task body();
         dma_tx t;
 
@@ -31,12 +31,16 @@ class dma_s3_1_seq extends dma_base_seq;
             enable == 1'b1;
             start  == 1'b1;
             irq    == 1'b1;
+
+            // DDR memory model 검증 조건
+            backpressure_prob == 90;
+            error_inject      == 1'b0;
         }) begin
             `uvm_fatal("S3_1_SEQ", "Failed to randomize dma_tx in dma_s3_1_seq")
         end
 
         // Scenario 이름 설정
-        t.scenario_name = "16B Small transfer (S3_1)";
+        t.scenario_name = "16B Transfer with 90% Backpressure (S3_1)";
 
         // Source memory를 32'hCAFE_0000 기반 pattern으로 초기화
         preload_src_mem(t.src_addr, t.data_payload);
@@ -58,7 +62,7 @@ class dma_s3_2_seq extends dma_base_seq;
         super.new(name);
     endfunction
 
-    // [body] : 64-byte 소형 복사 transaction 생성 및 source memory 초기화
+    // [body] : BRESP SLVERR가 주입되는 64-byte 복사 transaction 생성
     virtual task body();
         dma_tx t;
 
@@ -75,12 +79,16 @@ class dma_s3_2_seq extends dma_base_seq;
             enable == 1'b1;
             start  == 1'b1;
             irq    == 1'b1;
+
+            // DDR memory model 검증 조건
+            backpressure_prob == 0;
+            error_inject      == 1'b1;
         }) begin
             `uvm_fatal("S3_2_SEQ", "Failed to randomize dma_tx in dma_s3_2_seq")
         end
 
         // Scenario 이름 설정
-        t.scenario_name = "64B Small transfer (S3_2)";
+        t.scenario_name = "64B Transfer with BRESP SLVERR (S3_2)";
 
         // Source memory를 32'hCAFE_0000 기반 pattern으로 초기화
         preload_src_mem(t.src_addr, t.data_payload);

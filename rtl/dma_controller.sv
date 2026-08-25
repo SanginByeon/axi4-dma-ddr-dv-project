@@ -5,6 +5,11 @@
 // - AXI4 read burst로 수신한 데이터를 내부 FIFO에 저장한 후 write burst로 전송.
 // - 전송 상태와 오류 정보를 MMIO register 및 interrupt로 제공.
 // - Baseline design.sv의 DMA controller를 동작 변경 없이 별도 파일로 분리.
+//
+// [Bug Fix]
+// - AXI4 W payload 갱신 조건 오류: WREADY 확인 없이 WVALID만으로 다음 payload를 출력하는 문제 수정.
+// - FIFO prefetch 종료 조건 오류: 후속 beat가 없는데도 현재 burst 범위 밖의 data를 prefetch하는 문제 수정.
+// - BRESP 오류 상태 전이 조건 오류: 이전 stat.error 값 참조로 S_DONE에 잘못 전이하는 문제 수정.
 // ============================================================================
 
 module dma_controller (
@@ -262,8 +267,10 @@ module dma_controller (
                       	m.wlast <= (w_beats_sent == burst_len_m1); // 마지막 여부
 					end
                   	else if (m.wvalid) begin 						// 전송 진행 중
-                      	m.wdata <= wdata_hold; 						// 보관분을 내보냄
-                    	m.wlast <= (w_beats_sent == burst_len_m1); 	// 마지막 여부
+						if (m.wready) begin 							// handshake 성립 시에만 다음 beat 출력
+							m.wdata <= wdata_hold; 					// 보관분을 내보냄
+							m.wlast <= (w_beats_sent == burst_len_m1); // 마지막 여부
+						end
 					end
 					else begin
 						m.wlast <= 1'b0; 							// 유휴 시 last=0
@@ -275,7 +282,7 @@ module dma_controller (
                       	cur_dst <= cur_dst + 4; 			// 목적지 주소 증가
 						w_beats_sent <= w_beats_sent + 1; 	// 송신 카운트++
                       
-                      	if (w_beats_sent != burst_len_m1) 	// 마지막 전이면
+						if ((w_beats_sent + 1) < burst_len_m1) // 이후 prefetch가 필요한 경우
                         	wdata_hold <= fifo[rd_ptr + 2]; // 다음 다음 데이터 프리패치
                       
                       	if (w_beats_sent == burst_len_m1) 	// 마지막 beat 직후
@@ -364,8 +371,8 @@ module dma_controller (
               	nxt = S_WR_RESP; 	// 마지막 write beat → RESP
           
 			S_WR_RESP: if (m.bvalid && m.bready) begin
-				if (stat.error)
-                  	nxt = S_ERROR; 	// 에러이면 ERROR
+				if (m.bresp != 2'b00)
+					nxt = S_ERROR; 	// BRESP 오류이면 ERROR
 				else if (bytes_left>0)
                   	nxt = S_NEXT; 	// 남으면 NEXT
 				else

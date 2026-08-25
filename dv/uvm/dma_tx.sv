@@ -1,7 +1,7 @@
 // ============================================================================
 // dma_tx.sv - DMA Transaction
 //
-// - DMA source/destination address, transfer size 및 CTRL 설정을 sequence item으로 정의.
+// - DMA source/destination address, transfer size, CTRL 및 DDR model 검증 설정을 정의.
 // - 전송 크기에 맞춰 source memory preload용 payload pattern을 생성.
 // - 4-byte 주소 정렬, 4KB memory 범위 및 source/destination 비중첩을 제한.
 // - Factory 등록, 정상 전송 기본값 및 transaction 출력 형식을 제공.
@@ -18,6 +18,12 @@ class dma_tx extends uvm_sequence_item;
     rand bit start;
     rand bit irq;
 
+    // DDR memory model의 AXI4 W channel backpressure 발생 확률
+    rand bit [7:0] backpressure_prob;
+
+    // DDR memory model의 BRESP 오류 주입 설정
+    rand bit error_inject;
+
     // Sequence별 테스트 시나리오 이름
     string scenario_name;
 
@@ -33,6 +39,8 @@ class dma_tx extends uvm_sequence_item;
         `uvm_field_int(enable, UVM_DEFAULT | UVM_BIN)
         `uvm_field_int(start, UVM_DEFAULT | UVM_BIN)
         `uvm_field_int(irq, UVM_DEFAULT | UVM_BIN)
+        `uvm_field_int(backpressure_prob, UVM_DEFAULT | UVM_DEC)
+        `uvm_field_int(error_inject, UVM_DEFAULT | UVM_BIN)
         `uvm_field_array_int(data_payload, UVM_DEFAULT)
         `uvm_field_string(scenario_name, UVM_DEFAULT)
     `uvm_object_utils_end
@@ -51,6 +59,17 @@ class dma_tx extends uvm_sequence_item;
         soft enable == 1'b1;
         soft start  == 1'b1;
         soft irq    == 1'b1;
+    }
+
+    // [Backpressure constraint] : 기본 동작은 stall 없이 유지하고 최대값은 99%로 제한
+    constraint c_backpressure {
+        backpressure_prob inside {[0:99]};
+        soft backpressure_prob == 0;
+    }
+
+    // [Error injection constraint] : 정상 전송에서는 BRESP 오류를 주입하지 않음
+    constraint c_error_injection {
+        soft error_inject == 1'b0;
     }
 
     // [Memory constraint] : Source/Destination 전송 영역을 4KB memory 내부로 제한
@@ -86,7 +105,9 @@ class dma_tx extends uvm_sequence_item;
         s = {s, $sformatf("size:%0d, ", size)};
         s = {s, $sformatf("enable:%0b, ", enable)};
         s = {s, $sformatf("start:%0b, ", start)};
-        s = {s, $sformatf("irq:%0b]", irq)};
+        s = {s, $sformatf("irq:%0b, ", irq)};
+        s = {s, $sformatf("backpressure_prob:%0d%%, ", backpressure_prob)};
+        s = {s, $sformatf("error_inject:%0b]", error_inject)};
 
         return s;
     endfunction

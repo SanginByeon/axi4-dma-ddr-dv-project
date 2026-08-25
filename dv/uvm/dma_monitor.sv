@@ -1,7 +1,7 @@
 // ============================================================================
 // dma_monitor.sv - DMA UVM Monitor
 //
-// - MMIO register write를 관찰하여 DMA transaction 정보를 수집.
+// - MMIO register write와 DDR model의 backpressure/error 설정을 관찰하여 transaction 수집.
 // - DMA 완료 또는 오류 interrupt 발생 시 수집한 transaction을 scoreboard로 전달.
 // ============================================================================
 
@@ -18,13 +18,14 @@ class dma_monitor extends uvm_monitor;
 
     virtual mmio_if.tb_mp mif;
     virtual axi4_if aif;
+    virtual ddr_model_if dif;
 
     function new(input string name = "dma_monitor", uvm_component parent = null);
         super.new(name, parent);
         send = new("send", this);
     endfunction
 
-    // [build_phase] : MMIO/AXI virtual interface 준비
+    // [build_phase] : MMIO/AXI/DDR model virtual interface 준비
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
 
@@ -33,9 +34,12 @@ class dma_monitor extends uvm_monitor;
 
         if (!uvm_config_db #(virtual axi4_if)::get(this, "", "aif", aif))
             `uvm_fatal("MON", "Unable to get aif from uvm_config_db");
+
+        if (!uvm_config_db #(virtual ddr_model_if)::get(this, "", "dif", dif))
+            `uvm_fatal("MON", "Unable to get dif from uvm_config_db");
     endfunction
 
-    // [run_phase] : MMIO write와 완료 interrupt를 관찰하여 transaction 복원
+    // [run_phase] : MMIO write와 완료/오류 interrupt를 관찰하여 transaction 복원
     virtual task run_phase(uvm_phase phase);
         dma_tx t;
 
@@ -59,6 +63,10 @@ class dma_monitor extends uvm_monitor;
                         t.enable = mif.dma_reg_wdata[0];
                         t.start  = mif.dma_reg_wdata[1];
                         t.irq    = mif.dma_reg_wdata[2];
+
+                        // DMA 시작 시 DDR memory model에 적용된 검증 조건 수집
+                        t.backpressure_prob = dif.backpressure_prob;
+                        t.error_inject = dif.error_inject;
 
                         // start가 설정되면 DMA 완료/오류까지 기다린 후 transaction 전달
                         if (t.start) begin

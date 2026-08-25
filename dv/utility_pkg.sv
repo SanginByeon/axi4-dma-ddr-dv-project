@@ -6,6 +6,7 @@
 // - 4KB 메모리 범위를 확인하고 backdoor 접근 실패를 UVM fatal로 처리.
 // - Step 1 MMIO 접근 timing을 유지하며 진행 로그를 UVM verbosity로 제어.
 // - Utility task/function을 automatic으로 선언하여 재진입 가능하게 구성.
+// - STATUS polling에서 done 또는 error를 DMA 동작의 종료 상태로 처리.
 // ============================================================================
 
 package utility_pkg;
@@ -89,19 +90,18 @@ package utility_pkg;
         disable fork;  // 나머지 스레드 종료(리소스 누수 방지)
     endtask
 
-    // [STATUS 폴링] : 인터럽트가 없거나 놓쳤을 때 보조 경로로 완료 확인
+    // [STATUS 폴링] : 인터럽트가 없거나 놓쳤을 때 보조 경로로 정상/오류 종료 확인
     task automatic wait_done_via_status(input int max_tries = 20);
         int i;
         logic [31:0] s;
 
         for (i = 0; i < max_tries; i++) begin
             read_dma_reg(8'h04, s);  // STATUS(0x04)
-            if (s[1]) return;        // done 비트=1이면 즉시 복귀
+            if (s[1] || s[2]) return; // done 또는 error 비트=1이면 즉시 복귀
             @(posedge mif.clk);      // 다음 폴링까지 1클록 대기
         end
 
-        // Error interrupt 경로에서는 done=0이 정상일 수 있으므로 정보 로그로 처리
-        `uvm_info("DMA_WAIT", "STATUS polling timeout (done=0)", UVM_MEDIUM)
+        `uvm_info("DMA_WAIT", "STATUS polling timeout (done=0, error=0)", UVM_MEDIUM)
     endtask
 
     // [Source memory preload] : src_addr부터 data_payload를 32-bit word 단위로 주입

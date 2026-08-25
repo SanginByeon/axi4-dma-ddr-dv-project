@@ -1,9 +1,9 @@
 // ============================================================================
 // testbench.sv - DMA-DDR UVM Testbench Top
 //
-// - DMA controller, DDR memory model 및 AXI4/MMIO interface를 연결.
+// - DMA controller, DDR memory model 및 AXI4/MMIO/DDR model interface를 연결.
 // - UVM 환경에 virtual interface를 전달하고 dma_test를 실행.
-// - Baseline의 정상 전송 시나리오를 UVM sequence로 동일하게 재현.
+// - 기준 전송, W channel backpressure 및 BRESP 오류 주입 시나리오를 실행.
 // - Transaction 기반 scoreboard로 전체 전송 영역의 데이터 무결성을 검증.
 // - Functional coverage 및 성능 결과를 UVM report phase에서 출력.
 // - DMA 상태와 AXI 활동을 verbosity 기반 UVM 로그로 제공.
@@ -59,9 +59,13 @@ module tb;
     // [MMIO 배선]
     mmio_if mmio(.clk(clk));
 
+    // [DDR memory model 제어] : UVM 환경에서 backpressure와 BRESP 오류 설정 전달
+    ddr_model_if ddr_model_ctrl(.aclk(clk), .aresetn(resetn));
+
     // [DDR 메모리 모델] : AXI Slave로 동작
     ddr_memory_model ddr_model (
-        .axi(memory_axi.slave)
+        .axi     (memory_axi.slave),
+        .ddr_cfg (ddr_model_ctrl)
     );
 
     // [DMA 컨트롤러] : AXI Master로 메모리에 접근
@@ -92,6 +96,9 @@ module tb;
         );
         uvm_config_db #(virtual axi4_if)::set(
             null, "*", "aif", memory_axi
+        );
+        uvm_config_db #(virtual ddr_model_if)::set(
+            null, "*", "dif", ddr_model_ctrl
         );
 
         run_test("dma_test");
