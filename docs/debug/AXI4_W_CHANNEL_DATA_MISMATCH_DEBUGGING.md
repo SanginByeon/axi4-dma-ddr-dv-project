@@ -59,6 +59,9 @@ end
 
 수정 후: [`rtl/dma_controller.sv`](../../rtl/dma_controller.sv#L293)
 
+(아래 코드는 Step 3 당시 W payload 갱신 조건만 수정한 상태이며, Step 4에서 수행한 WLAST
+timing 수정은 반영하기 전의 코드임.)
+
 ```systemverilog
 else if (m.wvalid) begin
     if (m.wready) begin

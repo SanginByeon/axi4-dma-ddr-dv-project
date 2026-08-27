@@ -29,8 +29,8 @@ handshake에서 `WLAST=0`인지도 확인한다. 따라서 마지막 beat의 WLA
 이전의 잘못된 WLAST 활성화를 하나의 property로 검출한다.
 
 각 assertion이 실패하면 `$error`를 발생시키고 해당 violation counter와 전체 counter인
-`vio_total`을 증가시킨다. `dma_test`의 report phase에서 assertion별 발생 횟수와 최종
-PASS/FAIL을 출력한다.
+`vio_total`을 증가시킨다. `dma_test`와 `dma_regression_test`의 report phase에서 assertion별
+발생 횟수와 최종 PASS/FAIL을 출력한다.
 
 ## 4. 판정 기준
 

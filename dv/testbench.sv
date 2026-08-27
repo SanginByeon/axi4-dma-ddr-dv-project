@@ -2,11 +2,11 @@
 // testbench.sv - DMA-DDR UVM Testbench Top
 //
 // - DMA controller, DDR memory model 및 AXI4/MMIO/DDR model interface를 연결.
-// - UVM 환경에 virtual interface를 전달하고 dma_test를 실행.
-// - 정상 경계값, 오류, backpressure 및 constrained-random 시나리오를 실행.
+// - UVM 환경에 virtual interface를 전달하고 선택된 UVM test를 실행.
+// - Step 4 종합 검증 또는 Step 5 multi-seed backpressure regression을 지원.
 // - Transaction 기반 scoreboard로 전체 전송 영역의 데이터 무결성을 검증.
 // - AXI4 W 채널의 backpressure 신호 유지와 WLAST timing을 assertion으로 검증.
-// - Transaction/FSM/AXI event functional coverage 및 성능 결과를 UVM report phase에서 출력.
+// - Step 4 dma_test에서 functional coverage 및 성능 결과를 UVM report phase에서 출력.
 // - DMA 상태와 AXI 활동을 verbosity 기반 UVM 로그로 제공.
 // ============================================================================
 
@@ -31,12 +31,14 @@ import utility_pkg::*;
 `include "dma_s5_backpressure_slverr_seq.sv"
 `include "dma_s6_error_recovery_seq.sv"
 `include "dma_s7_random_seq.sv"
+`include "dma_regression_seq.sv"
 `include "dma_driver.sv"
 `include "dma_monitor.sv"
 `include "dma_scoreboard.sv"
 `include "dma_agent.sv"
 `include "dma_env.sv"
 `include "dma_test.sv"
+`include "dma_regression_test.sv"
 
 module tb;
 
@@ -103,8 +105,10 @@ module tb;
         .w_beats_sent (dma_ctrl.w_beats_sent)
     );
 
-    // [UVM 시작] : 실제 interface를 virtual interface로 전달한 뒤 test 실행
+    // [UVM 시작] : 실제 interface를 전달하고 run option에 따라 UVM test 선택
     initial begin
+        string selected_test_name;
+
         uvm_config_db #(virtual mmio_if.tb_mp)::set(
             null, "*", "mif", mmio.tb_mp
         );
@@ -115,7 +119,16 @@ module tb;
             null, "*", "dif", ddr_model_ctrl
         );
 
-        run_test("dma_test");
+        // +UVM_TESTNAME이 없으면 기존 Step 4 dma_test를 기본으로 실행
+        if ($value$plusargs("UVM_TESTNAME=%s", selected_test_name)) begin
+            `uvm_info(
+                "TB",
+                $sformatf("Selected UVM test: %s", selected_test_name),
+                UVM_LOW
+            )
+            run_test();
+        end else
+            run_test("dma_test");
     end
 
     // [시뮬레이션 관측] : 파형 덤프와 시작 정보 출력
