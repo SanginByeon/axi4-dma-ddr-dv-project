@@ -44,11 +44,11 @@ endgroup
 | ID | Coverpoint | Sampling 조건 | 목표 bin | 목적 |
 |---|---|---|---|---|
 | C-TX-01 | `cp_size_boundary` | DMA done/error interrupt | 1, 2, 3, 4, 12, 15, 16, 60, 64, 68, 80, 256, 1,024, 1,028, 2,048B | 미지원 크기, 기준 전송, burst 경계, tail 및 최대 전송 확인 |
-| C-TX-02 | `cp_size_range` | DMA done/error interrupt, 4-byte 배수 | `size_tiny`=4~16, `size_small`=20~256, `size_medium`=260~1,024, `size_large`=1,028~2,048B | 정상 전송의 크기 분포 확인 |
+| C-TX-02 | `cp_size_range` | DMA done/error interrupt, 4-byte 배수 | `size_tiny`=4–16, `size_small`=20–256, `size_medium`=260–1,024, `size_large`=1,028–2,048B | 정상 전송의 크기 분포 확인 |
 | C-TX-03 | `cp_size_category` | DMA done/error interrupt | 4B 미만 / 4B 이상 비배수 / 4B 배수 | 정상·오류 크기 조건 분류 |
 | C-TX-04 | `cp_src_region` | DMA done/error interrupt | low / mid / high | Source 시작 주소의 4 KB memory 영역 분산 |
 | C-TX-05 | `cp_dst_region` | DMA done/error interrupt | low / mid / high | Destination 시작 주소의 4 KB memory 영역 분산 |
-| C-TX-06 | `cp_backpressure_class` | DMA done/error interrupt | `bp_none`=0%, `bp_low`=1~30%, `bp_medium`=31~70%, `bp_high`=71~99% | 응답 지연 강도별 stimulus 확인 |
+| C-TX-06 | `cp_backpressure_class` | DMA done/error interrupt | `bp_none`=0%, `bp_low`=1–30%, `bp_medium`=31–70%, `bp_high`=71–99% | 응답 지연 강도별 stimulus 확인 |
 | C-TX-07 | `cp_error_inject` | DMA done/error interrupt | off / on | 정상 BRESP와 의도적 SLVERR 조건 확인 |
 | C-TX-08 | `cp_error_code` | DMA done/error interrupt | normal=`0x0`, size error=`0x2`, SLVERR=`0x3` | Stimulus에 대응하는 실제 종료 결과 확인 |
 

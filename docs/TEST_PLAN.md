@@ -107,7 +107,7 @@ coverage 조합을 담당하므로, S7은 constrained-random 생성과 무작위
 | S7-1~S7-5 | 4~256B, 4-byte 배수 | 4-byte 정렬, 4 KB 내부, 비중첩 | 1~99% | 0 | 정상 완료, data 일치 |
 
 Source와 destination 시작 주소는 low/mid/high memory region에 분산되도록 가중치를 적용하고,
-backpressure는 low(1~30%), medium(31~70%), high(71~99%) 구간에 동일한 가중치를 적용한다.
+backpressure는 low(1–30%), medium(31–70%), high(71–99%) 구간에 동일한 가중치를 적용한다.
 
 ## 6. 예상 UVM Error
 
