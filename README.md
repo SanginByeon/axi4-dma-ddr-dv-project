@@ -1,5 +1,7 @@
 # AXI4 기반 DMA–DDR 메모리 모델 시스템 검증 고도화 프로젝트
 
+> 🌐 **English Version:** View the fully translated project at **[axi4-dma-ddr-dv-project-ENG](https://github.com/SanginByeon/axi4-dma-ddr-dv-project-ENG)**.
+
 교육과정에서 제공된 AXI4 DMA–DDR baseline 코드를 기준으로 설계 구조를 분리하고, UVM 기반
 검증 환경, random backpressure와 오류 주입, functional coverage, assertion checker 및
 multi-seed regression을 단계적으로 구축한 개인 프로젝트입니다.
